@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 
 
+@Deprecated
 public class TailRunExecutor extends Executor {
     public static final String TOOL_WINDOWS_ID = "MyBatis Log Restore.";
 

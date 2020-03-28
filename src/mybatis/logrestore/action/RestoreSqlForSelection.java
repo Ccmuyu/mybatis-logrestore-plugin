@@ -25,6 +25,7 @@ import java.util.Scanner;
  *
  * @author ob
  */
+@Deprecated
 public class RestoreSqlForSelection extends AnAction {
     private static String preparingLine = "";
     private static String parametersLine = "";

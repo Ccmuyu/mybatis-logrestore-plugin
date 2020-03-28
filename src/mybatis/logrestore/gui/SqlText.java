@@ -12,6 +12,8 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class SqlText extends JFrame {
@@ -21,11 +23,11 @@ public class SqlText extends JFrame {
     private JButton buttonCopy;
     private JButton buttonClose;
     private JTextArea originalTextArea;
-    private JTextArea resultTextArea;
+    private JTextArea resArea;
     private JButton buttonClear;
 
     public SqlText(Project project) {
-        this.setTitle("restore sql from text"); //设置标题
+        this.setTitle("restore prepare sql from text"); //设置标题
         setContentPane(panel1);
         getRootPane().setDefaultButton(buttonOK);
         buttonOK.addActionListener(e -> onOK(project));
@@ -44,20 +46,22 @@ public class SqlText extends JFrame {
 
     private void onOK(Project project) {
         if (originalTextArea == null || StringUtils.isBlank(originalTextArea.getText())) {
-            this.resultTextArea.setText("Can't restore sql from text.-0");
+            this.resArea.setText("Can't restore sql from text.-0");
             return;
         }
         String originalText = originalTextArea.getText();
         final String PREPARING = StringConst.PREPARING;
         final String PARAMETERS = StringConst.PARAMETERS;
         if (originalText.contains(PREPARING) && originalText.contains(PARAMETERS)) {
-            String[] sqlArr = originalText.split("\n");
-            this.resultTextArea.setText(originalText + "\n sql arr:" + sqlArr.length);
-            if (sqlArr != null && sqlArr.length >= 2) {
-                int couple = sqlArr.length / 2;
+            List<String> sqlArr = prepareText(originalText);
+            if (sqlArr.isEmpty()) {
+                resArea.setText("no mybatis prepare sql provided.");
+            }
+            if (sqlArr != null && sqlArr.size() >= 2) {
+                int couple = sqlArr.size() / 2;
                 StringBuilder sql = new StringBuilder();
                 for (int i = 0; i < couple; i++) {
-                    String result = prepare(sqlArr[0], sqlArr[1]);
+                    String result = prepare(sqlArr.get(2 * i), sqlArr.get(2 * i + 1));
                     sql.append(result);
                     if (i != couple - 1) {
                         sql.append("\r\n################################################################################");
@@ -65,16 +69,31 @@ public class SqlText extends JFrame {
                 }
                 String res = sql.toString();
                 if (res.isEmpty()) {
-                    resultTextArea.setText("empty sql..");
+                    resArea.setText("empty sql..");
                 } else {
-                    resultTextArea.setText(res);
+                    resArea.setText(res);
                 }
             } else {
-                this.resultTextArea.setText("Can't restore sql from text.-2");
+                this.resArea.setText("Can't restore sql from text.-2");
             }
         } else {
-            this.resultTextArea.setText("Can't restore sql from text.-3");
+            this.resArea.setText("Can't restore sql from text.-3");
         }
+    }
+
+
+    private List<String> prepareText(String s) {
+        String[] split = s.split("\n");
+        List<String> res = new ArrayList<>();
+        for (int i = 0; i < split.length; i++) {
+            while ((split[i] == null || split[i].isEmpty())) {
+                i++;
+            }
+            if (split[i].contains(StringConst.PREPARING) || split[i].contains(StringConst.PARAMETERS)) {
+                res.add(split[i]);
+            }
+        }
+        return res;
     }
 
     private String prepare(String preparingLine, String parametersLine) {
@@ -83,12 +102,12 @@ public class SqlText extends JFrame {
 
     private void onCopy() {
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-        StringSelection selection = new StringSelection(this.resultTextArea.getText());
+        StringSelection selection = new StringSelection(this.resArea.getText());
         clipboard.setContents(selection, null);
     }
 
     private void onClear() {
-        this.resultTextArea.setText("");
+        this.resArea.setText("");
         this.originalTextArea.setText("");
     }
 

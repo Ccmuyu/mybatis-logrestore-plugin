@@ -1,17 +1,15 @@
 <idea-plugin>
     <id>com.your.company.unique.plugin.id</id>
-    <name>Plugin display name here</name>
+    <name>MybatisLogRestorePlugin</name>
     <version>1.0</version>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <vendor email="260669587@qq.com" url="https://ccmuyu.github.io">zzw</vendor>
 
     <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+      mybatis log restore with parameters
     ]]></description>
 
     <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+      ...
     ]]>
     </change-notes>
 
@@ -30,22 +28,31 @@
     <actions>
 
         <!-- restore sql from selection -->
-        <action class="mybatis.logrestore.action.RestoreSqlForSelection" id="RestoreSqlAction"
+      <!--  <action class="mybatis.logrestore.action.RestoreSqlForSelection" id="RestoreSqlAction"
                 text="Restore Sql from Selection"
                 description="Restore Sql. from Selection">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
             <add-to-group group-id="ConsoleEditorPopupMenu" anchor="before" relative-to-action="ConsoleView.ClearAll"/>
-        </action>
+        </action>-->
 
         <action id="Hello" class="mybatis.logrestore.action.HelloCls" text="hi" description="say hi">
             <add-to-group group-id="ToolsBasicGroup" anchor="first"/>
         </action>
-        <action id="logTailWindowAction" class="mybatis.logrestore.action.LogTailWindow"
+     <!--   <action id="logTailWindowAction" class="mybatis.logrestore.action.LogTailWindow"
                 text="Mybatis Log Restore Plugin"
                 icon="/mybatis/logrestore/icon/mybatis.png"
                 description="日志还原窗口">
             <add-to-group group-id="ToolsBasicGroup" anchor="first"/>
             <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt P"/>
+        </action>
+     -->
+        <action id="PrepareSqlRestoreAction" class="mybatis.logrestore.action.PrepareSqlRestoreAction"
+                icon="/mybatis/logrestore/icon/mybatis.png"
+                text="Prepare Sql Restore Action" description="prepare sql restore">
+            <add-to-group group-id="ToolsBasicGroup" anchor="first"/>
+            <add-to-group group-id="ConsoleEditorPopupMenu" anchor="before" relative-to-action="ConsoleView.ClearAll"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+
         </action>
     </actions>
 

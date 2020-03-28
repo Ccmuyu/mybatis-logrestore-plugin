@@ -15,6 +15,7 @@ import mybatis.logrestore.util.ConfigUtil;
  *
  * @author ob
  */
+@Deprecated
 public class ShowLogInConsoleAction extends DumbAwareAction {
 
     public ShowLogInConsoleAction(Project project) {

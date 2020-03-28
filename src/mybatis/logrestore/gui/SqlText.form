@@ -23,7 +23,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="babbb" class="javax.swing.JTextArea" binding="resultTextArea">
+              <component id="babbb" class="javax.swing.JTextArea" binding="resArea">
                 <constraints/>
                 <properties/>
               </component>

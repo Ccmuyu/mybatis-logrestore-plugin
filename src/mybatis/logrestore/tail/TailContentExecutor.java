@@ -41,6 +41,7 @@ import java.util.List;
  *
  * @author ob
  */
+@Deprecated
 public class TailContentExecutor implements Disposable {
     private final Project myProject;
     private final List<Filter> myFilterList = new ArrayList<>();
