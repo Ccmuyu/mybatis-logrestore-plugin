@@ -1,0 +1,52 @@
+<idea-plugin>
+    <id>com.your.company.unique.plugin.id</id>
+    <name>Plugin display name here</name>
+    <version>1.0</version>
+    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+    <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+    </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="173.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <executor implementation="mybatis.logrestore.tail.TailRunExecutor" id="MyBatisLogTail"/>
+    </extensions>
+
+
+    <actions>
+
+        <!-- restore sql from selection -->
+        <action class="mybatis.logrestore.action.RestoreSqlForSelection" id="RestoreSqlAction"
+                text="Restore Sql from Selection"
+                description="Restore Sql. from Selection">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="ConsoleEditorPopupMenu" anchor="before" relative-to-action="ConsoleView.ClearAll"/>
+        </action>
+
+        <action id="Hello" class="mybatis.logrestore.action.HelloCls" text="hi" description="say hi">
+            <add-to-group group-id="ToolsBasicGroup" anchor="first"/>
+        </action>
+        <action id="logTailWindowAction" class="mybatis.logrestore.action.LogTailWindow"
+                text="Mybatis Log Restore Plugin"
+                icon="/mybatis/logrestore/icon/mybatis.png"
+                description="日志还原窗口">
+            <add-to-group group-id="ToolsBasicGroup" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt P"/>
+        </action>
+    </actions>
+
+</idea-plugin>
