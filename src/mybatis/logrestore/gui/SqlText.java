@@ -27,7 +27,7 @@ public class SqlText extends JFrame {
     private JButton buttonClear;
 
     public SqlText(Project project) {
-        this.setTitle("restore prepare sql from text"); //设置标题
+        this.setTitle("Restore mybatis prepare sql from text"); //设置标题
         setContentPane(panel1);
         getRootPane().setDefaultButton(buttonOK);
         buttonOK.addActionListener(e -> onOK(project));
@@ -74,10 +74,10 @@ public class SqlText extends JFrame {
                     resArea.setText(res);
                 }
             } else {
-                this.resArea.setText("Can't restore sql from text.-2");
+                this.resArea.setText("no mybatis prepare sql provided.-2");
             }
         } else {
-            this.resArea.setText("Can't restore sql from text.-3");
+            this.resArea.setText("no mybatis prepare sql provided.-3");
         }
     }
 
