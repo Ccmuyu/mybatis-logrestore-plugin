@@ -10,7 +10,7 @@ mybatis 日志还原插件。预编译语句还原插件
 
 # 插件使用方法：
 ## 安装：
-方法一：S
+方法一：
 打开任意idea项目窗口，将zip包直接拖入编辑页面，提示restart ide，确认重启即可！
 傻瓜式操作！   
 
@@ -21,11 +21,14 @@ mybatis 日志还原插件。预编译语句还原插件
 Settings --> plugin --> install from disk(不同idea版本位置不同)
 
 # 使用示例：
+（无代理会打不开图片）   
+tools 导航   
 ![入口1](./gate1.png)   
 
 ---
-
+任意文件editor里邮件：   
 ![入口2](./gate2.png)
 ---
+打开窗口示例：   
 ![使用demo](use1.png)
 
