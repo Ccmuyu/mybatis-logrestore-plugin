@@ -26,4 +26,6 @@ Settings --> plugin --> install from disk(不同idea版本位置不同)
 ---
 
 ![入口2](./gate2.png)
+---
+![使用demo](use1.png)
 
