@@ -26,8 +26,10 @@ tools 导航
 ![入口1](./gate1.png)   
 
 ---
-任意文件editor里邮件：   
+
+任意文件editor里右键：   
 ![入口2](./gate2.png)
+
 ---
 打开窗口示例：   
 ![使用demo](use1.png)
