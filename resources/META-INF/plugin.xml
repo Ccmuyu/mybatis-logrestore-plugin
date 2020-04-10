@@ -27,28 +27,13 @@
 
     <actions>
 
-        <!-- restore sql from selection -->
-      <!--  <action class="mybatis.logrestore.action.RestoreSqlForSelection" id="RestoreSqlAction"
-                text="Restore Sql from Selection"
-                description="Restore Sql. from Selection">
-            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
-            <add-to-group group-id="ConsoleEditorPopupMenu" anchor="before" relative-to-action="ConsoleView.ClearAll"/>
-        </action>-->
-
-        <action id="Hello" class="mybatis.logrestore.action.HelloCls" text="hi" description="say hi">
-            <add-to-group group-id="ToolsBasicGroup" anchor="first"/>
-        </action>
-     <!--   <action id="logTailWindowAction" class="mybatis.logrestore.action.LogTailWindow"
-                text="Mybatis Log Restore Plugin"
-                icon="/mybatis/logrestore/icon/mybatis.png"
-                description="日志还原窗口">
-            <add-to-group group-id="ToolsBasicGroup" anchor="first"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt P"/>
-        </action>
-     -->
+        <!--  <action id="Hello" class="mybatis.logrestore.action.HelloCls" text="hi" description="say hi">
+                <add-to-group group-id="ToolsBasicGroup" anchor="first"/>
+            </action>
+        -->
         <action id="PrepareSqlRestoreAction" class="mybatis.logrestore.action.PrepareSqlRestoreAction"
                 icon="/mybatis/logrestore/icon/mybatis.png"
-                text="Prepare Sql Restore Action" description="prepare sql restore">
+                text="Mybatis prepared sql restore" description="prepare sql restore">
             <add-to-group group-id="ToolsBasicGroup" anchor="first"/>
             <add-to-group group-id="ConsoleEditorPopupMenu" anchor="before" relative-to-action="ConsoleView.ClearAll"/>
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
