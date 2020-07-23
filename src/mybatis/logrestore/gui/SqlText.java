@@ -3,7 +3,7 @@ package mybatis.logrestore.gui;
 import com.intellij.openapi.project.Project;
 import mybatis.logrestore.StringConst;
 import mybatis.logrestore.util.RestoreSqlUtil;
-import org.apache.commons.lang3.StringUtils;
+//import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,7 +45,7 @@ public class SqlText extends JFrame {
     }
 
     private void onOK(Project project) {
-        if (originalTextArea == null || StringUtils.isBlank(originalTextArea.getText())) {
+        if (originalTextArea == null || isBlank(originalTextArea.getText())) {
             this.resArea.setText("Can't restore sql from text.-0");
             return;
         }
@@ -81,6 +81,17 @@ public class SqlText extends JFrame {
         }
     }
 
+    private boolean isBlank(CharSequence sequence) {
+        if (sequence == null || sequence.length() == 0) {
+            return true;
+        }
+        for (int i = 0; i < sequence.length(); i++) {
+            if (!Character.isWhitespace(sequence.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     private List<String> prepareText(String s) {
         String[] split = s.split("\n");

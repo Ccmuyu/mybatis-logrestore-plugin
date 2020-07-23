@@ -4,12 +4,14 @@
     <version>1.0</version>
     <vendor email="260669587@qq.com" url="https://ccmuyu.github.io">zzw</vendor>
 
-    <description><![CDATA[
-      mybatis log restore with parameters
-    ]]></description>
+    <description>
+       mybatis sql日志还原插件.
+        将mybatis的参数拼接到预编译语句里,同时对sql格式化
+    </description>
 
     <change-notes><![CDATA[
-      ...
+      v1.1 功能优化
+      v1.0 初始化。基本的预编译语句还原，还原结果为完成sql，可直接执行
     ]]>
     </change-notes>
 
@@ -20,10 +22,6 @@
          on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <executor implementation="mybatis.logrestore.tail.TailRunExecutor" id="MyBatisLogTail"/>
-    </extensions>
-
 
     <actions>
 
@@ -33,7 +31,7 @@
         -->
         <action id="PrepareSqlRestoreAction" class="mybatis.logrestore.action.PrepareSqlRestoreAction"
                 icon="/mybatis/logrestore/icon/mybatis.png"
-                text="Mybatis prepared sql restore" description="prepare sql restore">
+                text="Mybatis Prepared Sql Restore @Zzw" description="Prepare sql restore.zzw">
             <add-to-group group-id="ToolsBasicGroup" anchor="first"/>
             <add-to-group group-id="ConsoleEditorPopupMenu" anchor="before" relative-to-action="ConsoleView.ClearAll"/>
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
